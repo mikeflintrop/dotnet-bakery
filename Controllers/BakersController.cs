@@ -32,5 +32,29 @@ namespace DotnetBakery.Controllers
             // find all records from Bakers table
             return _context.Bakers;
         }
+
+        // GET /api/bakers/:id
+        [HttpGet("{id}")]
+        public ActionResult<Baker> GetById(int id) 
+        {
+            Baker baker = _context.Bakers.SingleOrDefault(baker => baker.id == id);
+
+            // return 404 if not found or baker doesnt exist
+            if (baker is null) {
+                return NotFound();
+            }
+
+            return baker;
+        }
+
+        //POST  to /api/bakers
+        [HttpPost]
+        public Baker Post(Baker baker)
+        {
+            _context.Add(baker);
+            _context.SaveChanges();
+            
+            return baker;
+        }
     }
 }

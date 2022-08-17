@@ -9,5 +9,6 @@ namespace DotnetBakery.Models
         // this is _context.Bakers
         // DBSet<Baker> means; data from the db, which is mapped to Baker model 
         public DbSet<Baker> Bakers { get; set; }
+        public DbSet<Bread> Breads { get; set; }
     }
 }
